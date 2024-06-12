@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    'drf_yasg',
 
     # Apps
     'user',
@@ -211,13 +212,15 @@ SIMPLE_JWT = {
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication', # TODO: For now
+        'rest_framework_simplejwt.authentication.JWTAuthentication', # TODO: For now
         'user.authenticate.CustomAuthentication',
     ],
 
     "DEFAULT_PERMISSION_CLASSES": [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
 AUTH_USER_MODEL = 'user.User'
